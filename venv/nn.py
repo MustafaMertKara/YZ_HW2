@@ -4,12 +4,12 @@ import numpy as np
 
 DataAdress="YZ_Data/"
 
-Size="50x50"
+Size="768x1024"
 
 imgs=np.load(DataAdress+Size+"_data.npy")
 labels=np.load(DataAdress+Size+"_labels.npy")
 
-learning_rate=0.01
+learning_rate=0.005
 epoch=500
 
 with tf.name_scope("input"):
@@ -42,7 +42,7 @@ init=tf.global_variables_initializer()
 config = tf.ConfigProto()
 config.gpu_options.allow_growth = True
 
-cv=StratifiedKFold(10,True)
+cv=StratifiedKFold(5,True)
 with tf.Session(config=config) as sess:
     Scores = []
     for j in range(10):
